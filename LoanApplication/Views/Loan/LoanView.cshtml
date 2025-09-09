@@ -1,0 +1,201 @@
+﻿@model List<LoanModel>
+@{
+    ViewData["Title"] = "LoanApplication";
+}
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!--Main Container-->
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+    <h2 class="text-black glassBackground"> Welcome to the loans Info Page</h2>
+      </div>
+
+      <div class="col-6 text-end">
+          <a asp-controller="Loan" asp-action="GetLoaner" class="btn text-primary glassBackground">Apply for Loan</a>
+      </div>
+</div>
+<br/> <br/>
+
+
+<!--Main Table-->
+<!--Overall loans -->
+    <h6 class="text-black glassBackground" >
+        Over all loans
+    </h6>
+    <table id="MainTable" class="table table-bordered glassBackground" >
+    <thead>
+        <tr>
+        <th>Loaner ID</th>
+        <th>Price of Property</th>
+        <th>Loan Granted</th>
+        <th>Max Instalment</th>
+        <th>Deposite required </th>
+        <th>Monthly Instalments</th>
+        <th>Status</th>
+        <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+        <tr class="text-secondary-bold">
+        <td  >@obj.ID</td>
+        <td >R @obj.PriceOfProperty</td>
+        <td >@obj.LoanGranted %</td>
+        <td >R @obj.MaximumInstalment</td>
+        <td >R @obj.DepositeRequired</td>
+        <td >R @obj.MonthlyInstalment</td>
+        <td >@obj.LoanStatus</td>
+        <td >
+         <div class="w-75 btn-group" role="group">
+            <a asp-controller="Loan" asp-action="Update" asp-route-id="@obj.ID" class="btn  text-primary mx-2">
+                 <i class="bi bi-pencil-square"></i>Update</a>
+            <a asp-controller="Loan" asp-action="Delete" asp-route-id="@obj.ID" class="btn  text-primary mx-2">
+                <i class="bi bi-pencil-square"></i>Delete</a>
+            <a asp-controller="Loan" asp-action="Details" asp-route-id="@obj.ID" class="btn text-primary mx-2">
+                <i class="bi bi-pencil-square"></i>Details
+            </a>
+         </div>
+        </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<br/><br/>
+
+<!--Accepted Loan Applications Table-->
+<h6 class="text-success glassBackground">Accepted loan applications</h6><hr/>
+<table id="AcceptedTable" class="table table-bordered glassBackground" style="width:110%">
+    <thead>
+        <tr>
+            <th>Loaner ID</th>
+            <th>Price of Property</th>
+            <th>Loan Granted</th>
+            <th>Max Instalment</th>
+            <th>Deposite required </th>
+            <th>Monthly Instalments</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+                @if (obj.LoanStatus == "Granted")
+                {
+                    <tr class="text-secondary-bold">
+                        <td width="10%">@obj.ID</td>
+                <td width="20%">R @obj.PriceOfProperty</td>
+                <td width="20%">@obj.LoanGranted %</td>
+                <td width="20%">R @obj.MaximumInstalment</td>
+                <td width="20%">R @obj.DepositeRequired</td>
+                <td width="20%">R @obj.MonthlyInstalment</td>
+                <td width="10%">@obj.LoanStatus</td>
+                <td width="30%">
+                    <div class="w-75 btn-group" role="group">
+                      
+                        <a asp-controller="Loan" asp-action="Details" asp-route-id="@obj.ID" class="btn glassBackground text-primary mx-2">
+                            <i class="bi bi-pencil-square"></i>Details
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            }
+        }
+    </tbody>
+    </table>
+    <button id="ShowAccepted" type="submit" class="btn btn-success glassBackground" style="width:200px">Show Accepted Loans</button>
+<br /><br/>
+
+<!--Rejected loan applications -->
+<h6 class="text-danger glassBackground">Rejected loan applications</h6><hr/>
+<table id="RejectsTable" class="table table-bordered glassBackground" style="width:110%">
+    <thead>
+        <tr>
+            <th>Loaner ID</th>
+            <th>Price of Property</th>
+            <th>Loan Granted</th>
+            <th>Max Instalment</th>
+            <th>Deposite required </th>
+            <th>Monthly Instalments</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+                @if (obj.LoanStatus == "Rejected")
+                {
+                    <tr class="text-secondary-bold">
+                        <td width="10%">@obj.ID</td>
+                <td width="20%">R @obj.PriceOfProperty</td>
+                <td width="20%">@obj.LoanGranted %</td>
+                <td width="20%">R @obj.MaximumInstalment</td>
+                <td width="20%">R @obj.DepositeRequired</td>
+                <td width="20%">R @obj.MonthlyInstalment</td>
+                <td width="10%">@obj.LoanStatus</td>
+                <td width="30%">
+                    <div class="w-75 btn-group" role="group">
+                       
+                        <a asp-controller="Loan" asp-action="Details" asp-route-id="@obj.ID" class="btn text-primary mx-2">
+                            <i class="bi bi-pencil-square"></i>Details
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            }
+        }
+    </tbody>
+</table>
+
+    <button id="ShowRejected"  type="submit" class="btn btn-danger glassBackground" style="width:200px">Show Rejected Loans</button>
+</div>  
+
+
+
+<!--Behavior Adjustment-->
+<script>
+    //Show/hide the accepted loan applications 
+    $(document).ready(function ()
+    {
+       $('#AcceptedTable').hide();
+        
+        $('#ShowAccepted').on('click', function () {
+            $('#AcceptedTable').toggle();
+        });
+
+  
+    }
+    );
+
+    //Show/hide the accepted loan applications
+    $(document).ready(function () {
+        $('#RejectsTable').hide();
+
+        $('#ShowRejected').on('click', function () {
+            $('#RejectsTable').toggle();
+        });
+
+
+    }
+    );
+
+
+
+</script>
+@* <style>
+    .glassBackground
+    {
+        block-size: fit-content;
+        background: rgba(255, 255, 255, 0.2); /* Transparent white */
+        backdrop-filter: blur(10px); /* Frosted glass effect */
+        -webkit-backdrop-filter: blur(10px); /* Safari support */
+        border-radius: 15px;
+        padding: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        
+    }
+
+</style> *@

@@ -1,0 +1,67 @@
+﻿@model LoanModel
+
+<form method="post" asp-action="Update">
+    <div class="border  p-3 mt-4 glassBackground">
+        <div class="row pb-2">
+            <h2 class="text-primary"> Welcome to the loan Update Page</h2>
+            <h4 class="text-primary"> Update your Loan Details Here</h4>
+            <hr />
+        </div>
+        <!--add Validations here
+
+        <div asp-validation-summary="All"></div>
+
+        -->
+        <div class="mb-3">
+
+            <label class="text-black">Please Update Your Name Here: </label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div><div class="mb-3">
+            <label class="text-black">Please Update Your Surname Here</label>
+            <input asp-for="Surname" class="form-control" />
+            <span asp-validation-for="Surname" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3">
+            <label class="text-black">Update Your Gross Salary here:</label>
+            <input asp-for="GrossSalary" class="form-control" />
+            <span asp-validation-for="GrossSalary" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3">
+            <label class="text-black">Update your credit score(0-1200) here: </label>
+            <input asp-for="CreditScore" class="form-control" />
+            <span asp-validation-for="CreditScore" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label class="text-black">Update the purchase price of the property here: </label>
+            <input asp-for="PriceOfProperty" class="form-control" />
+            <span asp-validation-for="PriceOfProperty" class="text-danger"></span>
+        </div>
+
+
+
+        <button type="submit" class="btn btn-primary" style="width:150px">Update Loan</button>
+
+        <a asp-controller="Loan" asp-action="LoanView" class="btn btn-secondary" style="width:150px">Back </a>
+    </div>
+</form>
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+}
+@* <style>
+    .glassBackground {
+    block-size: fit-content;
+    background: rgba(255, 255, 255, 0.2); /* Transparent white */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+</style> *@
