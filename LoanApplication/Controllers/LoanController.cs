@@ -115,10 +115,7 @@ namespace LoanApplication.Controllers
         }
 
 
-        public static void Hide()
-        {
-
-        }
+       
 
 
        // Utility method

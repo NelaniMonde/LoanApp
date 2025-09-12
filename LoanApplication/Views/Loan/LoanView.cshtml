@@ -39,7 +39,7 @@
     <tbody>
         @foreach(var obj in Model)
         {
-        <tr class="text-secondary-bold">
+        <tr class="text-black-50">
         <td  >@obj.ID</td>
         <td >R @obj.PriceOfProperty</td>
         <td >@obj.LoanGranted %</td>
@@ -54,7 +54,7 @@
             <a asp-controller="Loan" asp-action="Delete" asp-route-id="@obj.ID" class="btn  text-primary mx-2">
                 <i class="bi bi-pencil-square"></i>Delete</a>
             <a asp-controller="Loan" asp-action="Details" asp-route-id="@obj.ID" class="btn text-primary mx-2">
-                <i class="bi bi-pencil-square"></i>Details
+                Details
             </a>
          </div>
         </td>
@@ -84,7 +84,7 @@
         {
                 @if (obj.LoanStatus == "Granted")
                 {
-                    <tr class="text-secondary-bold">
+                    <tr class="text-black-50">
                         <td width="10%">@obj.ID</td>
                 <td width="20%">R @obj.PriceOfProperty</td>
                 <td width="20%">@obj.LoanGranted %</td>
@@ -95,8 +95,8 @@
                 <td width="30%">
                     <div class="w-75 btn-group" role="group">
                       
-                        <a asp-controller="Loan" asp-action="Details" asp-route-id="@obj.ID" class="btn glassBackground text-primary mx-2">
-                            <i class="bi bi-pencil-square"></i>Details
+                        <a asp-controller="Loan" asp-action="Details" asp-route-id="@obj.ID" class="btn text-primary mx-2">
+                            Details
                         </a>
                     </div>
                 </td>
@@ -105,7 +105,7 @@
         }
     </tbody>
     </table>
-    <button id="ShowAccepted" type="submit" class="btn btn-success glassBackground" style="width:200px">Show Accepted Loans</button>
+    <button id="ShowAccepted" type="submit" class="btn btn-success glassBackground text-black-50" style="width:200px">Show Accepted Loans</button>
 <br /><br/>
 
 <!--Rejected loan applications -->
@@ -128,7 +128,7 @@
         {
                 @if (obj.LoanStatus == "Rejected")
                 {
-                    <tr class="text-secondary-bold">
+                    <tr class="text-black-50">
                         <td width="10%">@obj.ID</td>
                 <td width="20%">R @obj.PriceOfProperty</td>
                 <td width="20%">@obj.LoanGranted %</td>
@@ -140,7 +140,7 @@
                     <div class="w-75 btn-group" role="group">
                        
                         <a asp-controller="Loan" asp-action="Details" asp-route-id="@obj.ID" class="btn text-primary mx-2">
-                            <i class="bi bi-pencil-square"></i>Details
+                            Details
                         </a>
                     </div>
                 </td>
@@ -150,7 +150,7 @@
     </tbody>
 </table>
 
-    <button id="ShowRejected"  type="submit" class="btn btn-danger glassBackground" style="width:200px">Show Rejected Loans</button>
+    <button id="ShowRejected" type="submit" class="btn btn-danger glassBackground text-black-50" style="width:200px">Show Rejected Loans</button>
 </div>  
 
 

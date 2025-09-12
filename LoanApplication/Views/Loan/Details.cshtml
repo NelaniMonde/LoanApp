@@ -3,7 +3,7 @@
 <div  class="card rounded-3 me-1g-n5 border p-3 mt-4 glassBackground">
     <div class="row pb-2">
         <h3 class="text-black"> Welcome to Your Home details Page</h3>
-        <h5 class="text-secondary">Hi there. I am Loaner, Your home loan digital assistance :D, Here are your Home loan details</h5>
+        <h5 class="text-black-50">Hi there. I am Loaner, Your home loan digital assistance :D, Here are your Home loan details</h5>
         <hr />
     </div>
 
@@ -12,34 +12,34 @@
     <dt class="col-sm-2 text-black">
         @Html.DisplayNameFor(Model => Model.Name)
     </dt>
-    <dd class="col-sm-10 text-secondary">
+    <dd class="col-sm-10 text-black-50">
         @Html.DisplayFor(Model=> Model.Name)
     </dd>
     <dt class="col-sm-2 text-black">
         @Html.DisplayNameFor(Model => Model.Surname)
     </dt>
-    <dd class="col-sm-10 text-secondary">
+    <dd class="col-sm-10 text-black-50">
         @Html.DisplayFor(Model=> Model.Surname)
     </dd>
     <!--Gross Salary-->
     <dt class="col-sm-2 text-black">
         @Html.DisplayNameFor(Model => Model.GrossSalary)
     </dt>
-    <dd class="col-sm-10 text-secondary">
+    <dd class="col-sm-10 text-black-50">
         R @Html.DisplayFor(Model=> Model.GrossSalary)
     </dd>
     <!--Credit score-->
     <dt class="col-sm-2 text-black">
         @Html.DisplayNameFor(Model => Model.CreditScore)
     </dt>
-    <dd class="col-sm-10 text-secondary">
+    <dd class="col-sm-10 text-black-50">
         @Html.DisplayFor(Model=> Model.CreditScore)
     </dd>
     <!--Granted Loan -->
     <dt class="col-sm-2 text-black">
         @Html.DisplayNameFor(Model => Model.LoanGranted)
     </dt>
-    <dd class="col-sm-10 text-secondary">
+    <dd class="col-sm-10 text-black-50">
             @Html.DisplayFor(Model=> Model.LoanGranted) %
     </dd>
 
@@ -47,18 +47,18 @@
     <dt class="col-sm-2 text-black">
         @Html.DisplayNameFor(Model => Model.PriceOfProperty)
     </dt>
-    <dd class="col-sm-10 text-secondary">
+    <dd class="col-sm-10 text-black-50">
         R @Html.DisplayFor(Model=> Model.PriceOfProperty)
     </dd>
     <!--loan status-->
     <dt class="col-sm-2 text-black">
         @Html.DisplayNameFor(Model => Model.LoanStatus)
     </dt>
-    <dd class="col-sm-10 text-secondary">
+    <dd class="col-sm-10 text-black-50">
         @Html.DisplayFor(Model=> Model.LoanStatus)
     </dd>
 </dl>
-    <a asp-controller="Loan" asp-action="LoanView" class="btn btn-secondary" style="width:150px">Back </a>
+    <a asp-controller="Loan" asp-action="LoanView" class="btn btn-secondary glassBackground text-black-50" style="width:150px">Back </a>
 </div>
 
 @* <style>

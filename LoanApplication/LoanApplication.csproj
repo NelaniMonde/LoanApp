@@ -9,6 +9,18 @@
   <ItemGroup>
     <Content Remove="Views\Loan\Delete.cshtml" />
     <Content Remove="Views\Loan\Details.cshtml" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,6 +51,10 @@
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Views\Loan\Details.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\lib\bootstrap\dist\js\" />
   </ItemGroup>
 
 </Project>

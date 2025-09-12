@@ -3,8 +3,8 @@
 <form method="post" asp-controller="Loan" asp-action="Delete">
     <div class="border p-3 mt-4 glassBackground">
         <div class="row pb-2">
-            <h3 class="text-primary"> Welcome to the loan Deletion Page</h3>
-            <h5 class="text-primary">Hi there. I am Loaner, Your home loan digital assistance :D</h5>
+            <h3 class="text-black"> Welcome to the loan Deletion Page</h3>
+            <h5 class="text-black-50">Hi there. I am Loaner, Your home loan digital assistance :D</h5>
             <hr />
         </div>
         <!--add Validations here
@@ -39,13 +39,13 @@
 
 
 
-        <button type="submit" class="btn btn-primary" style="width:150px">Delete Loaner</button>
+        <button type="submit" class="btn btn-primary glassBackground text-black-50" style="width:150px">Delete Loaner</button>
 
-        <a asp-controller="Loan" asp-action="LoanView" class="btn btn-secondary" style="width:150px">Back </a>
+        <a asp-controller="Loan" asp-action="LoanView" class="btn btn-secondary glassBackground text-black-50" style="width:150px">Back </a>
     </div>
 </form>
 
-<style>
+@* <style>
   .glassBackground
   {
       block-size: fit-content;
@@ -57,4 +57,4 @@
       border: 1px solid rgba(255, 255, 255, 0.3);
 
   }
-</style>
+</style> *@
