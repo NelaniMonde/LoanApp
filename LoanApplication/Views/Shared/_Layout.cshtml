@@ -10,18 +10,35 @@
    
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/LoanApplication.styles.css" asp-append-version="true" />
+
+    <!--Title icon image-->
+    <link rel="icon" href="/Images/loanImageThree.jpg" style="border-radius:50px;" type="image/x-icon">
    
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg glassBackground">
             <div class="container-fluid text-black " >
-                <a class="navbar-brand  text-black-50" asp-area="" asp-controller="Home" asp-action="Index">LoanApplication</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" 
-                aria-controls="navbarColor02"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <a class="navbar-brand text-black" asp-area="" asp-controller="Home" asp-action="Index">
+
+                    <img src="~/images/loanImageThree.jpg" width="30" height="30" alt="Logo" class="navbar-logo">
+                    Loaner
+                </a>
+                <button class="nav-toggle" id="navToggle">
+                    ☰
                 </button>
+
+                <!--Small device sized nav bar start  -->
+                <nav class="nav-menu  glassBackground" style=" z-index:100;" id="navMenu" hidden>
+                    <ul class="navbar-nav me-auto glassBackground">
+                        <li class="nav-item">
+                            <a class="navbar-brand  text-black-50" asp-area="" asp-controller="Loan" asp-action="LoanView">Home Loans</a>
+                        </li>
+
+                    </ul>
+                    </nav>
+
+                    <!-- Large screen Nav-->
                 <div class="collapse navbar-collapse collapse " id="navbarColor02">
                     <ul class="navbar-nav me-auto">
                         @*<li class="nav-item">
@@ -47,12 +64,13 @@
     <br/>
     <footer class="border-top footer text-muted text-dark" style="margin-top:200px;">
         <div class="container text-dark">
-            &copy; 2024 - LoanApplication - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2026 - LoanApplication - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.datatables.net/2.3.5/js/dataTables.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

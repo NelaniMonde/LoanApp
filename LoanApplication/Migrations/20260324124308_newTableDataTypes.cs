@@ -4,7 +4,7 @@
 
 namespace LoanApplication.Migrations
 {
-    public partial class addLoanModelToDatabase : Migration
+    public partial class newTableDataTypes : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -23,7 +23,8 @@ namespace LoanApplication.Migrations
                     MaximumInstalment = table.Column<float>(type: "real", nullable: false),
                     LoanGranted = table.Column<float>(type: "real", nullable: false),
                     DepositeRequired = table.Column<float>(type: "real", nullable: false),
-                    MonthlyInstalment = table.Column<float>(type: "real", nullable: false)
+                    MonthlyInstalment = table.Column<float>(type: "real", nullable: false),
+                    CreatedDateTime = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoanApplication.Migrations
 {
     [DbContext(typeof(AppDataBaseContext))]
-    [Migration("20250909120549_addDateTimefield")]
-    partial class addDateTimefield
+    [Migration("20260324124308_newTableDataTypes")]
+    partial class newTableDataTypes
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

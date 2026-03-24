@@ -49,7 +49,7 @@ namespace LoanApplication.Controllers
             return RedirectToAction("LoanView");
             
 
-            return View(loanObj);
+            
             
         }
 

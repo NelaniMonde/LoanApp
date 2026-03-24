@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Content Remove="Views\Loan\Delete.cshtml" />
-    <Content Remove="Views\Loan\Details.cshtml" />
     <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
     <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
     <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
@@ -41,19 +40,14 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Views\Loan\Delete.cshtml" />
-    <_ContentIncludedByDefault Remove="Views\Loan\Details.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Views\Loan\Delete.cshtml" />
-    <None Include="Views\Loan\Details.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
-    <UpToDateCheckInput Remove="Views\Loan\Details.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Folder Include="Migrations\" />
     <Folder Include="wwwroot\lib\bootstrap\dist\js\" />
   </ItemGroup>
 
