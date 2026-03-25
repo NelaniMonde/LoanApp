@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Loan\Delete.cshtml" />
     <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
     <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
     <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
@@ -32,18 +31,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
     <PackageReference Include="popper.js" Version="1.16.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Views\Loan\Delete.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Views\Loan\Delete.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Views\Loan\Delete.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

@@ -7,13 +7,12 @@ var menu = document.getElementById("navMenu");
 var count = 0;
 
 //View variables declarations
-const indexText = document.getElementById("indexDisplayText");
-const bookingView = document.getElementById("bookingView");
-const viewBookings = document.getElementById("viewBookings");
-const editResource = document.getElementById("editResource");
-const deleteResource = document.getElementById("deleteResource");
-const addResource = document.getElementById("addResource");
-const viewResources = document.getElementById("viewResources");
+const indexText = document.getElementById("IndexId");
+const addLoanerID = document.getElementById("AddLoanerID");
+const updateLoanerID = document.getElementById("UpdateLoanerID");
+const deleteLoanerID = document.getElementById("DeleteLoanerID");
+const loanerDetailsID = document.getElementById("LoanerDetailsID");
+
 
 
 
@@ -26,31 +25,25 @@ toggleBtn.addEventListener("click", () => {
 
     //element event conditions
     if (indexText != null) {
-        indexText.style.marginTop = '210px';
+        indexText.style.marginTop = '50px';
     }
-    if (bookingView != null) {
-        bookingView.style.marginTop = '259px';
+    if (addLoanerID != null) {
+        addLoanerID.style.marginTop = '50px';
     }
-    if (viewBookings != null) {
+    if (updateLoanerID != null) {
 
-        viewBookings.style.marginTop = '259px';
-    }
-
-    if (editResource != null) {
-        editResource.style.marginTop = '259px';
+        updateLoanerID.style.marginTop = '50px';
     }
 
-    if (deleteResource != null) {
-        deleteResource.style.marginTop = '259px';
+    if (deleteLoanerID != null) {
+        deleteLoanerID.style.marginTop = '50px';
     }
 
-    if (addResource != null) {
-        addResource.style.marginTop = '259px';
+    if (loanerDetailsID != null) {
+        loanerDetailsID.style.marginTop = '50px';
     }
 
-    if (viewResources != null) {
-        viewResources.style.marginTop = '259px';
-    }
+    
 
 
 
@@ -64,30 +57,20 @@ toggleBtn.addEventListener("click", () => {
             indexText.style.marginTop = "50px";
         }
 
-        if (bookingView != null) {
-            bookingView.style.marginTop = '50px';
+        if (addLoanerID != null) {
+            addLoanerID.style.marginTop = '50px';
         }
-        if (viewBookings != null) {
-            viewBookings.style.marginTop = '25px';
-        }
-
-        if (editResource != null) {
-            editResource.style.marginTop = '30px';
+        if (updateLoanerID != null) {
+            updateLoanerID.style.marginTop = '25px';
         }
 
-        if (deleteResource != null) {
-            deleteResource.style.marginTop = '30px';
+        if (deleteLoanerID != null) {
+            deleteLoanerID.style.marginTop = '30px';
         }
 
-        if (addResource != null) {
-            addResource.style.marginTop = '30px';
+        if (loanerDetailsID != null) {
+            loanerDetailsID.style.marginTop = '30px';
         }
-
-        if (viewResources != null) {
-            viewResources.style.marginTop = '30px';
-        }
-
-
 
         count = 0;
     }

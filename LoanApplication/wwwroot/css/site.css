@@ -52,8 +52,20 @@ body {
     width: 590px;
 }
 
+/* form styling for the details view start*/
 
+.formSizingDetails {
+    width: 790px;
+}
 
+.formAlignmentDetails {
+    margin-left: 213px;
+    margin-top: 50px;
+    text-wrap:balance;
+}
+/* form styling for the details view end*/
+
+/** form alignment end**/
 /* Responsive style formatting start*/
 .nav-menu {
     display: flex;
@@ -169,5 +181,19 @@ body {
         width: 300px;
     }
     /* form alignment end*/
+
+
+    /* form styling for the details view start*/
+
+    .formSizingDetails {
+        width: 300px;
+    }
+
+    .formAlignmentDetails {
+        margin-left: 27px;
+       
+        text-wrap: balance;
+    }
+    /* form styling for the details view end*/
 }
 /* Responsive style formatting end*/
