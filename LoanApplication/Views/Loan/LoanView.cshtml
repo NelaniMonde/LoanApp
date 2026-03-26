@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "LoanApplication";
 }
-
+<partial class="toast-container" name="ToastNotification" />
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <!--Main Container-->
 <div class="container p-3">
@@ -160,8 +160,11 @@
     //Show/hide the accepted loan applications 
     $(document).ready(function ()
     {
+        $('#MainTable').DataTable({'responsive':true});
+       
+
        $('#AcceptedTable').hide();
-        
+         $('#AcceptedTable').DataTable({'responsive':true});
         $('#ShowAccepted').on('click', function () {
             $('#AcceptedTable').toggle();
         });
@@ -172,8 +175,9 @@
 
     //Show/hide the accepted loan applications
     $(document).ready(function () {
+       
         $('#RejectsTable').hide();
-
+         $('#RejectsTable').DataTable({'responsive':true});
         $('#ShowRejected').on('click', function () {
             $('#RejectsTable').toggle();
         });

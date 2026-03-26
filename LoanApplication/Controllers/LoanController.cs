@@ -15,11 +15,24 @@ namespace LoanApplication.Controllers
 
 
 
-        public IActionResult LoanView()
+        public IActionResult LoanView(string message, string deleteMSG, string updateMSG)
         {
           var loanObjList = _dataBase.Loans.ToList();
 
-            
+            if (message != null)
+            {
+                TempData["Success"]=message;
+            }
+
+            if (deleteMSG != null)
+            {
+                TempData["Error"]=deleteMSG;
+            }
+
+            if (updateMSG!=null)
+            {
+                TempData["Warning"]=updateMSG;
+            }
             return View(loanObjList);
         }
 
@@ -37,7 +50,7 @@ namespace LoanApplication.Controllers
         {
 
 
-
+            string messageNotif = "";
         
 
 
@@ -46,7 +59,10 @@ namespace LoanApplication.Controllers
             _dataBase.Loans.Add(loanObj);
             _dataBase.SaveChanges();
 
-            return RedirectToAction("LoanView");
+            messageNotif = "Loan Application for: " + loanObj.Name + " " + loanObj.Surname
+                + "\n With a loan Status of " + loanObj.LoanStatus + "\nhas been Successfully Created!!!";
+
+            return RedirectToAction("LoanView",new {message =messageNotif});
             
 
             
@@ -72,13 +88,20 @@ namespace LoanApplication.Controllers
         [HttpPost]
         public IActionResult Update(LoanModel loanObj)
         {
+            string messageNotif = "";
 
             loanObj = UtilityMethod(loanObj);
           _dataBase.Loans.Update(loanObj);
             _dataBase.SaveChanges();
-            return RedirectToAction("LoanView");
 
-            return View(loanObj);
+
+
+            messageNotif = "Loan Application for: " + loanObj.Name + " " + loanObj.Surname
+                + "\n With a loan Status of " + loanObj.LoanStatus + "\nhas been Successfully Updated!!!";
+
+            return RedirectToAction("LoanView", new { updateMSG = messageNotif});
+
+          
         }
 
 
@@ -96,12 +119,18 @@ namespace LoanApplication.Controllers
         [HttpPost]
         public IActionResult Delete(LoanModel loanObj)
         {
+            string messageNotif = "";
+
             loanObj = UtilityMethod(loanObj);
             _dataBase.Loans.Remove(loanObj);
             _dataBase.SaveChanges();
-            return RedirectToAction("LoanView");
 
-            return View(loanObj);
+            messageNotif = "Loan Application for: " + loanObj.Name + " " + loanObj.Surname
+    + "\n With a loan Status of " + loanObj.LoanStatus + "\nhas been Successfully Deleted!!!";
+
+            return RedirectToAction("LoanView", new { deleteMSG =messageNotif});
+
+          
         }
 
         public IActionResult Details(int? id)

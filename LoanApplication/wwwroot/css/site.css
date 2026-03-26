@@ -195,5 +195,16 @@ body {
         text-wrap: balance;
     }
     /* form styling for the details view end*/
+
+
+    /* Toaster Formatting */
+    .toast-top-center {
+        width: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 0 15px;
+    }
 }
 /* Responsive style formatting end*/
