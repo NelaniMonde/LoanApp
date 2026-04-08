@@ -29,7 +29,7 @@ namespace LoanApplication.Controllers
                 TempData["Error"]=deleteMSG;
             }
 
-            if (updateMSG!=null)
+            if (updateMSG !=null)
             {
                 TempData["Warning"]=updateMSG;
             }
