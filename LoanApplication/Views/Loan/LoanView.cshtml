@@ -23,7 +23,7 @@
     <h6 class="text-black glassBackground" >
         Over all loans
     </h6>
-    <table id="MainTable" class="table table-bordered glassBackground" >
+    <table id="MainTable" class="table table-bordered glassBackground " >
     <thead>
         <tr>
         <th>Loaner ID</th>
@@ -160,11 +160,24 @@
     //Show/hide the accepted loan applications 
     $(document).ready(function ()
     {
-        $('#MainTable').DataTable({'responsive':true});
+        $('#MainTable').DataTable({'responsive':true ,
+            columnDefs: [
+                { className: 'control', orderable: false, targets: 0 }, // optional: dedicated expand column
+                { responsivePriority: 1, targets: 0 },  // Loaner ID - always show
+                { responsivePriority: 2, targets: -1 }, // Actions - always show
+                { responsivePriority: 3, targets: 6 }   // Status - show fairly early
+            ]});
        
 
-       $('#AcceptedTable').hide();
-         $('#AcceptedTable').DataTable({'responsive':true});
+      
+         $('#AcceptedTable').DataTable({'responsive':true ,
+            columnDefs: [
+                { className: 'control', orderable: false, targets: 0 }, // optional: dedicated expand column
+                { responsivePriority: 1, targets: 0 },  // Loaner ID - always show
+                { responsivePriority: 2, targets: -1 }, // Actions - always show
+                { responsivePriority: 3, targets: 6 }   // Status - show fairly early
+            ]});
+             $('#AcceptedTable').hide();
         $('#ShowAccepted').on('click', function () {
             $('#AcceptedTable').toggle();
         });
@@ -176,8 +189,15 @@
     //Show/hide the accepted loan applications
     $(document).ready(function () {
        
-        $('#RejectsTable').hide();
-         $('#RejectsTable').DataTable({'responsive':true});
+      
+         $('#RejectsTable').DataTable({'responsive':true ,
+            columnDefs: [
+                { className: 'control', orderable: false, targets: 0 }, // optional: dedicated expand column
+                { responsivePriority: 1, targets: 0 },  // Loaner ID - always show
+                { responsivePriority: 2, targets: -1 }, // Actions - always show
+                { responsivePriority: 3, targets: 6 }   // Status - show fairly early
+            ] });
+              $('#RejectsTable').hide();
         $('#ShowRejected').on('click', function () {
             $('#RejectsTable').toggle();
         });
