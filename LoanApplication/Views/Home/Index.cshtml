@@ -1,13 +1,76 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 
-}
+    var rejectedLoans = TempData["rejectedLoans"];
+    TempData.Keep("rejectedLoans");
+    var acceptedLoans = TempData["acceptedLoans"];
+    TempData.Keep("acceptedLoans");
+    var noOfLoans = TempData["noOfLoans"];
+    TempData.Keep("noOfLoans");
 
+}
+<script src="https://www.gstatic.com/charts/loader.js">
+</script>
 
 <div id="IndexId" class="text-black-50 text-center " style="margin-top:50px;">
-    <h6 class="display-4">
+    <h6 class="display-4 GlassBackGround">
+        Home Loans
 
-        <span class="GlassBackGround">
+      
+    </h6>
+    <div class="row align-content-center">
+    <div class="col-1 text-white" id="chart" style="width:50%; height:50%;">
+
+    </div>
+    </div>
+
+</div>
+
+
+
+
+<script>
+    google.charts.load('current',{'packages':
+    ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart()
+    {
+        const data = google.visualization.arrayToDataTable(
+       [     ['Contry','Loop'],
+            ['Accepted Loans',@acceptedLoans],
+            ['Rejected Loans',@rejectedLoans]
+       ] );
+
+       const options = {title:'Home Loan Stats ('+@noOfLoans+')',
+       is3D:true,
+       backgroundColor:{fill:'transparent'}};
+
+           // Draw
+    const chart = new google.visualization.PieChart(document.getElementById('chart'));
+    chart.draw(data, options);
+
+    }
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* <span class="GlassBackGround">
             W
             E
             L
@@ -36,11 +99,8 @@
             a
             n
             s
-        </span>
-    </h6>
+        </span> *@
 
-
-</div>
 
 
 

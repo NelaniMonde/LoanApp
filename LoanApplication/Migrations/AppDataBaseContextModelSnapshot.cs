@@ -33,34 +33,34 @@ namespace LoanApplication.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("CreditScore")
-                        .HasColumnType("real");
+                    b.Property<decimal>("CreditScore")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<float>("DepositeRequired")
-                        .HasColumnType("real");
+                    b.Property<decimal>("DepositeRequired")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<float>("GrossSalary")
-                        .HasColumnType("real");
+                    b.Property<decimal>("GrossSalary")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<float>("LoanGranted")
-                        .HasColumnType("real");
+                    b.Property<decimal>("LoanGranted")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("LoanStatus")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("MaximumInstalment")
-                        .HasColumnType("real");
+                    b.Property<decimal>("MaximumInstalment")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<float>("MonthlyInstalment")
-                        .HasColumnType("real");
+                    b.Property<decimal>("MonthlyInstalment")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("PriceOfProperty")
-                        .HasColumnType("real");
+                    b.Property<decimal>("PriceOfProperty")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Surname")
                         .IsRequired()

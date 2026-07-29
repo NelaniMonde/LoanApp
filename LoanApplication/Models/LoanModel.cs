@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using LoanApplication.HelperClasses;
+using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace LoanApplication.Models
@@ -25,18 +27,19 @@ namespace LoanApplication.Models
         [Required]
         [DisplayName("Gross Salary: ")]
         [Range(0,1000000000000)]
-        public float GrossSalary { get; set; }
+        [ModelBinder(BinderType = typeof(FlexibleDecimalModelBinder))]
+        public decimal GrossSalary { get; set; }
 
        
         [Required]
         [Range(0,1200)]
         [DisplayName("Credit Score: ")]
-        public float CreditScore { get; set; }
+        public decimal CreditScore { get; set; }
 
         [Range(0, 1000000000000)]
         [DisplayName("Price Of Property: ")]
         [Required]
-        public float PriceOfProperty { get; set; }
+        public decimal PriceOfProperty { get; set; }
 
         [DisplayName("Loan Status: ")]
         [Required]
@@ -44,16 +47,16 @@ namespace LoanApplication.Models
 
         [DisplayName("Maximum Instalment: ")]
         [Required]
-        public float MaximumInstalment { get; set;}
+        public decimal MaximumInstalment { get; set;}
         [DisplayName("Loan Granted: ")]
         [Required]
-        public float LoanGranted { get; set;}
+        public decimal LoanGranted { get; set;}
         [DisplayName("Deposite Required: ")]
         [Required]
-        public float DepositeRequired { get; set;}
+        public decimal DepositeRequired { get; set;}
         [DisplayName("Monthly Instalment: ")]
         [Required]
-        public float MonthlyInstalment { get; set;}
+        public decimal MonthlyInstalment { get; set;}
         [DisplayName("Date Created: ")]
         public string CreatedDateTime { get; set; } = today.ToShortDateString();
     }

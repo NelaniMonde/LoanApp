@@ -150,10 +150,10 @@ namespace LoanApplication.Controllers
        // Utility method
         public LoanModel UtilityMethod(LoanModel loanObj)
         {
-            float maximumInst = 0;
-            float loanGranted = 0;
-            float deposite = 0;
-            float monthlyInstall = 0;
+            decimal maximumInst = 0;
+            decimal loanGranted = 0;
+            decimal deposite = 0;
+            decimal monthlyInstall = 0;
             
             
 
@@ -163,8 +163,19 @@ namespace LoanApplication.Controllers
                 maximumInst = MaximumInstalCal(loanObj.GrossSalary);
                 loanObj.LoanStatus = "Granted";
                 loanGranted = loanGrantedCal(100);
-                deposite = DepositeReqCal(loanObj.PriceOfProperty,loanGranted);
+                deposite = DepositeReqCal(loanObj.PriceOfProperty, loanGranted);
                 monthlyInstall = MonthlyInstalCal(loanObj.PriceOfProperty, deposite);
+
+
+                if (monthlyInstall > loanObj.GrossSalary)
+                {
+                    loanObj.LoanStatus = "Rejected";
+                    loanGranted = 0;
+                }
+
+
+
+
             }
             //97.5 loan
             else if (loanObj.CreditScore >= 750 && loanObj.CreditScore <= 799)
@@ -172,9 +183,17 @@ namespace LoanApplication.Controllers
                 
                 maximumInst = MaximumInstalCal(loanObj.GrossSalary);
                 loanObj.LoanStatus = "Granted";
-                loanGranted = loanGrantedCal(97.5);
+                loanGranted = loanGrantedCal((decimal)97.5);
                 deposite = DepositeReqCal(loanObj.PriceOfProperty, loanGranted);
                 monthlyInstall = MonthlyInstalCal(loanObj.PriceOfProperty, deposite);
+
+                if (monthlyInstall > loanObj.GrossSalary)
+                {
+                    loanObj.LoanStatus = "Rejected";
+                    loanGranted = 0;
+                }
+
+
             }
             //95% loan
             else if (loanObj.CreditScore >= 700 && loanObj.CreditScore <= 749)
@@ -185,6 +204,13 @@ namespace LoanApplication.Controllers
                 loanGranted = loanGrantedCal(95);
                 deposite = DepositeReqCal(loanObj.PriceOfProperty, loanGranted);
                 monthlyInstall = MonthlyInstalCal(loanObj.PriceOfProperty, deposite);
+
+                if (monthlyInstall > loanObj.GrossSalary)
+                {
+                    loanObj.LoanStatus = "Rejected";
+                    loanGranted = 0;
+                }
+
             }
 
             //90% loan
@@ -192,30 +218,55 @@ namespace LoanApplication.Controllers
             {
                 maximumInst = MaximumInstalCal(loanObj.GrossSalary);
                 loanObj.LoanStatus = "Granted";
-                loanGranted =loanGrantedCal(90);
+                loanGranted = loanGrantedCal(90);
                 deposite = DepositeReqCal(loanObj.PriceOfProperty, loanGranted);
                 monthlyInstall = MonthlyInstalCal(loanObj.PriceOfProperty, deposite);
+
+                if (monthlyInstall > loanObj.GrossSalary)
+                {
+                    loanObj.LoanStatus = "Rejected";
+                    loanGranted = 0;
+                }
+
+
             }
             //85% loan
             else if (loanObj.CreditScore >= 600 && loanObj.CreditScore <= 649)
             {
                 maximumInst = MaximumInstalCal(loanObj.GrossSalary);
+
                 loanObj.LoanStatus = "Granted";
                 loanGranted = loanGrantedCal(85);
-                deposite = DepositeReqCal(loanObj.PriceOfProperty,  loanGranted);
+                deposite = DepositeReqCal(loanObj.PriceOfProperty, loanGranted);
                 monthlyInstall = MonthlyInstalCal(loanObj.PriceOfProperty, deposite);
+
+                if (monthlyInstall > loanObj.GrossSalary)
+                {
+                    loanObj.LoanStatus = "Rejected";
+                    loanGranted = 0;
+                }
+
+
             }
             //80% loan
             else if (loanObj.CreditScore >= 550 && loanObj.CreditScore <= 599)
             {
                 maximumInst = MaximumInstalCal(loanObj.GrossSalary);
+
                 loanObj.LoanStatus = "Granted";
                 loanGranted = loanGrantedCal(80);
                 deposite = DepositeReqCal(loanObj.PriceOfProperty, loanGranted);
                 monthlyInstall = MonthlyInstalCal(loanObj.PriceOfProperty, deposite);
+
+                if (monthlyInstall > loanObj.GrossSalary)
+                {
+                    loanObj.LoanStatus = "Rejected";
+                    loanGranted = 0;
+                }
+
             }
             //No loan
-            else if (loanObj.CreditScore <= 549)
+            else if (loanObj.CreditScore <= 549 )
             {
                 maximumInst = 0;
                 loanObj.LoanStatus = "Rejected";
@@ -245,29 +296,45 @@ namespace LoanApplication.Controllers
 
         }
 
-        public float MaximumInstalCal(float grossSalary)
+        //change this to set the status to Rejected 
+        //and other elements to zero 
+        public void isMonthlyInstalmentLess(string status, decimal loanGranted )
         {
-            float maxInstal = grossSalary * 30 / 100;
+            
+            
+                
+                status = "Rejected";
+                loanGranted = 0;
+              
+            
+
+            
+
+        }
+
+        public decimal MaximumInstalCal(decimal grossSalary)
+        {
+            decimal maxInstal = grossSalary * 30 / 100;
 
             return maxInstal;
         }
 
-        public float loanGrantedCal(double loangrant)
+        public decimal loanGrantedCal(decimal loangrant)
         {
-            float loanGranted = (float)(loangrant);
+            decimal loanGranted = (decimal)(loangrant);
             return loanGranted;
         }
     
 
-        public float DepositeReqCal(float priceOfPropery,float loanGranted)
+        public decimal DepositeReqCal(decimal priceOfPropery,decimal loanGranted)
         {
-            float deposite = priceOfPropery - (priceOfPropery * loanGranted/100);
+            decimal deposite = priceOfPropery - (priceOfPropery * loanGranted/100);
 
             return deposite;
         }
-        public float MonthlyInstalCal(float priceOfproperty, float deposite)
+        public decimal MonthlyInstalCal(decimal priceOfproperty, decimal deposite)
         {
-            float monthlyInstall = (float)((priceOfproperty - deposite) * ((double)0.00785));
+            decimal monthlyInstall = (decimal)((priceOfproperty - deposite) * ((decimal)0.00785));
 
             return monthlyInstall;
         }
