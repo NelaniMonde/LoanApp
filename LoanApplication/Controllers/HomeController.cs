@@ -25,6 +25,8 @@ namespace LoanApplication.Controllers
                 acceptedLoans = 0,
                 noOfLOans = 0;
 
+            List<decimal> grantedLoans = new List<decimal>();
+
             foreach (var loan in loanRec)
             {
                 if(loan.LoanStatus== "Granted")
@@ -35,13 +37,14 @@ namespace LoanApplication.Controllers
                 {
                     rejectedLoans++;
                 }
-
+                grantedLoans.Add(loan.LoanGranted);
                 noOfLOans++;
             }
 
             TempData["rejectedLoans"]=rejectedLoans;
             TempData["acceptedLoans"]=acceptedLoans;
-            TempData["noOfLoans"]=noOfLOans;    
+            TempData["noOfLoans"]=noOfLOans;
+            ViewBag.loansAllocated = grantedLoans;
 
             return View();
         }

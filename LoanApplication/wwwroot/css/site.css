@@ -93,13 +93,37 @@ body {
     color: white;
     cursor: pointer;
 }
+/*Thee end*/
 
 
+/*Chart Styling Start*/
+.chart-container {
+    width: 100%;
+    min-height: 350px;
+    height: 400px;
+}
+/*Chart Styling End*/
+
+/*Chart responsive styling Start*/
+@media (max-width:991px) {
+
+    .chart-container {
+        height: 350px;
+    }
+}
+/*Chart responsive styling End*/
 
 
 
 
 @media(max-width:768px) {
+
+
+    /* Chart responsive styling Start*/
+    .chart-container {
+        height: 300px;
+    }
+    /* Chart responsive styling End*/
 
     /*Nav toggle start */
     .nav-toggle {
@@ -149,21 +173,16 @@ body {
     }
     /*margin top*/
 
-    /*Index view editing start */
-    /*    #indexDisplayText h6 {
-        margin-top: 1px;
-        width: fit-content;
-        font-size: 19px;
-    }*/
-
+    
+/*
     #imageContainer img {
         width: 150px;
         height: 100px;
-    }
+    }*/
 
-    #imageContainer {
+   /* #imageContainer {
         margin-left: -150%;
-    }
+    }*/
     /*Index view editing end */
 
     /* horizontal after username start*/
@@ -207,4 +226,15 @@ body {
         padding: 0 15px;
     }
 }
+
+/*Chart Responsive Styling Start*/
+@media (max-width:576px) {
+
+    .chart-container {
+        height: 250px;
+    }
+}
+/*Chart Responsive Styling End*/
+
+
 /* Responsive style formatting end*/

@@ -8,6 +8,50 @@
     var noOfLoans = TempData["noOfLoans"];
     TempData.Keep("noOfLoans");
 
+
+    /*Granted Loans Stats*/
+    int loan80 = 0,
+    loan85 = 0,
+    loan90 = 0,
+    loan95 = 0,
+    loan97 = 0,
+    loan100 = 0;
+
+
+    foreach (var loanGranted in ViewBag.loansAllocated)
+    {
+        if(loanGranted == (decimal)80.00)
+        {
+            loan80 ++;
+        }
+
+        if (loanGranted == (decimal)85.00)
+        {
+            loan85 ++;
+        }
+
+        if (loanGranted == (decimal)90.00)
+        {
+            loan90 ++;
+        }
+
+        if (loanGranted == (decimal)95.00)
+        {
+            loan95 ++;
+        }
+
+        if (loanGranted == (decimal)97.5)
+        {
+            loan97 ++;
+        }
+
+        if (loanGranted == (decimal)100.00)
+        {
+            loan100 ++;
+        }
+    }
+
+
 }
 <script src="https://www.gstatic.com/charts/loader.js">
 </script>
@@ -18,10 +62,14 @@
 
       
     </h6>
-    <div class="row align-content-center">
-    <div class="col-1 text-white" id="chart" style="width:50%; height:50%;">
-
+    <div class="container-fluid">
+    <div class="col-12 col-md-6">
+            <div class="chart-container" text-white" id="chart" style="height:400px;">
+        </div>
     </div>
+        <div class="col-lg-6 mb-4">
+            <div id="barChart" style="height:400px;"></div>
+        </div>
     </div>
 
 </div>
@@ -34,9 +82,18 @@
     ['corechart']});
     google.charts.setOnLoadCallback(drawChart);
 
+    window.addEventListener('resize',drawChart);
+
     function drawChart()
     {
-        const data = google.visualization.arrayToDataTable(
+      
+        threeDchart();
+        barCahrt();
+    }
+
+    function threeDchart()
+    {
+          const data = google.visualization.arrayToDataTable(
        [     ['Contry','Loop'],
             ['Accepted Loans',@acceptedLoans],
             ['Rejected Loans',@rejectedLoans]
@@ -49,6 +106,31 @@
            // Draw
     const chart = new google.visualization.PieChart(document.getElementById('chart'));
     chart.draw(data, options);
+    }
+
+    function barCahrt()
+    {
+         const data=google.visualization.arrayToDataTable([
+
+        ['Loans Percentages','Loans Granted'],
+
+        ['80%',@loan80],
+        ['85%',@loan85],
+        ['90%',@loan90],
+        ['95%',@loan95],
+        ['97.5%',@loan97],
+        ['100%',@loan100]
+
+    ]);
+
+     const options={
+        title:'Loan Percentiles vs Loans Granted',
+        backgroundColor:'transparent',
+        legend:{position:'none'} };
+
+        var chart=new google.visualization.ColumnChart(document.getElementById('barChart'));
+
+        chart.draw(data,options);
 
     }
 
