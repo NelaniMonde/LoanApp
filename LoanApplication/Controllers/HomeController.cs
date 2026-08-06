@@ -20,7 +20,7 @@ namespace LoanApplication.Controllers
         public IActionResult Index()
         {
             var loanRec = _dataBaseContext.Loans.ToList();
-
+            List<LoanModel>loans=new List<LoanModel>();
             int rejectedLoans = 0,
                 acceptedLoans = 0,
                 noOfLOans = 0;
@@ -39,14 +39,18 @@ namespace LoanApplication.Controllers
                 }
                 grantedLoans.Add(loan.LoanGranted);
                 noOfLOans++;
+
+                loans.Add(loan);
             }
 
             TempData["rejectedLoans"]=rejectedLoans;
             TempData["acceptedLoans"]=acceptedLoans;
             TempData["noOfLoans"]=noOfLOans;
             ViewBag.loansAllocated = grantedLoans;
+           // ViewBag.loans = loanRec;
 
-            return View();
+            return View(loanRec
+                        );
         }
 
         public IActionResult Privacy()

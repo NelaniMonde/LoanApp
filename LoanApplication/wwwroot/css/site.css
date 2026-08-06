@@ -41,6 +41,16 @@ body {
     margin: 2px;
     display: inline-block;
 }
+.chartGlassBg {
+    block-size: stretch;
+
+    background: rgba(255, 255, 255, 0.2); /* Transparent white */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border-radius: 15px;
+    padding: -10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
 
 /** form alignment and sizing start **/
 .formAlignment {

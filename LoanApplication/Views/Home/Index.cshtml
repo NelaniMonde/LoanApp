@@ -1,4 +1,7 @@
-﻿@{
+﻿@model List<LoanModel>
+
+
+@{
     ViewData["Title"] = "Home Page";
 
     var rejectedLoans = TempData["rejectedLoans"];
@@ -52,6 +55,7 @@
     }
 
 
+
 }
 <script src="https://www.gstatic.com/charts/loader.js">
 </script>
@@ -63,13 +67,29 @@
       
     </h6>
     <div class="container-fluid">
-    <div class="col-12 col-md-6">
-            <div class="chart-container" text-white" id="chart" style="height:400px;">
+        <!--Row 1 charts-->
+        <div class="row">
+    
+        <div class="col-12 col-md-6 chartGlassBg">
+           <div class="chart-container" text-white" id="chart" style="height:380px;"> </div>
         </div>
-    </div>
-        <div class="col-lg-6 mb-4">
-            <div id="barChart" style="height:400px;"></div>
+
+            <div class="col-12 col-md-6 chartGlassBg">
+                <div class="chart-container" text-white" id="lineGraphDiv" style="height:380px;"> </div>
+            </div>
+
+
         </div>
+        <!--End of Row 1 Charts-->
+
+        <!-- Row 2 Charts-->
+        <div class="row">
+            <div class="col-lg-6 mb-4 chartGlassBg">
+            <div id="barChart" style="height:380px;"></div>
+        </div>
+        </div>
+        <!--End of Row 2 Charts -->
+
     </div>
 
 </div>
@@ -84,13 +104,17 @@
 
     window.addEventListener('resize',drawChart);
 
+    //Mother Function for Charts start
     function drawChart()
     {
       
         threeDchart();
         barCahrt();
+        lineGraph();
     }
+    //Mother Function for Charts end
 
+    //3D Pie Chart start
     function threeDchart()
     {
           const data = google.visualization.arrayToDataTable(
@@ -107,7 +131,9 @@
     const chart = new google.visualization.PieChart(document.getElementById('chart'));
     chart.draw(data, options);
     }
+    //3D Pie Chart End 
 
+    //Bar Graph Start
     function barCahrt()
     {
          const data=google.visualization.arrayToDataTable([
@@ -133,6 +159,42 @@
         chart.draw(data,options);
 
     }
+    //Bar Graph End 
+
+
+    //Line Graph stuff
+      var charLineGPdata = [['Gross Salary', 'Loan Granted']];
+
+    @foreach (var item in Model)
+    {
+            <text>
+                        charLineGPdata.push([
+            @item.GrossSalary.ToString(System.Globalization.CultureInfo.InvariantCulture),
+            @item.LoanGranted.ToString(System.Globalization.CultureInfo.InvariantCulture)
+        ]);
+            </text>
+    }
+
+    console.log('charLineGPdata:', charLineGPdata);
+   // console.log(google);
+    
+    
+    function lineGraph()
+    {
+
+    const data = google.visualization.arrayToDataTable(charLineGPdata);
+        const options = {
+            title: 'Gross Salary vs Loan Granted',
+            backgroundColor: 'transparent',
+            legend: { position: 'none' },
+            hAxis: { title: 'Gross Salary' },
+            vAxis: { title: 'Loan Granted' }
+        };
+        const chart = new google.visualization.LineChart(document.getElementById('lineGraphDiv'));
+        chart.draw(data, options);
+
+    }
+    //Line graph stuff end 
 
 
 </script>
